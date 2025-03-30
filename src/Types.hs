@@ -19,7 +19,7 @@ type Parser = Parsec Void String
  Otherwise this type will be set to @Always@ to always run.
 -}
 data Once = Always | Once Bool
-    deriving Eq, Show
+    deriving (Eq, Show)
 
 {- |
  @(start)string1@ parses to @Start string1@
@@ -27,7 +27,7 @@ data Once = Always | Once Bool
  @(end)string1@ parses to @End string1@
 -}
 data Search = Start String | First String | End String
-    deriving Eq, Ord, Show
+    deriving (Eq, Ord, Show)
 
 {- |
 @=(start)string2@ parses to @Enqueue string2@
@@ -36,7 +36,7 @@ data Search = Start String | First String | End String
 @=(return)string2@ parses to @Return string2@
 -}
 data Replace = Enqueue String | Replace String | Push String | Return String
-    deriving Eq, Ord, Show
+    deriving (Eq, Ord, Show)
 
 {- |
  *run* stores the once status of the expression
@@ -47,4 +47,4 @@ data Instruction = Instruction
     { run :: Once
     , a :: Search
     , b :: Replace
-    }
+    } deriving (Show)

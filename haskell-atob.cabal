@@ -26,6 +26,8 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Parsers
+      Types
   other-modules:
       Paths_haskell_atob
   autogen-modules:
