@@ -22,9 +22,9 @@ data Once = Always | Once Bool
     deriving (Eq, Show)
 
 {- |
- @(start)string1@ parses to @Start string1@
- @string1@ parses to @First string1@
- @(end)string1@ parses to @End string1@
+ @(start)string1=@ parses to @Start string1@
+ @string1=@ parses to @First string1@
+ @(end)string1=@ parses to @End string1@
 -}
 data Search = Start String | First String | End String
     deriving (Eq, Ord, Show)
