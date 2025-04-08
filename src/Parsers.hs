@@ -42,7 +42,7 @@ parseOnce = do
     pure $ isPrefixed prefix
 
 {-
-Returns the appropitate Once type depending on if the search is
+Returns the appropiate Once type depending on if the search is
 prefixed by (once).
 -}
 isPrefixed :: Bool -> Once

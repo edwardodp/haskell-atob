@@ -3,7 +3,9 @@ module Types
     , Once (..)
     , Search (..)
     , Replace (..)
-    , Instruction (Instruction)
+    , Instruction (..)
+    , getSearch
+    , getReplace
     )
 where
 
@@ -45,6 +47,19 @@ data Replace = Enqueue String | Replace String | Push String | Return String
 -}
 data Instruction = Instruction
     { run :: Once
-    , a :: Search
-    , b :: Replace
+    , search :: Search
+    , replace :: Replace
     } deriving (Show)
+
+getSearch :: Search -> String
+getSearch s = case s of
+    Start str -> str
+    First str -> str
+    End str -> str
+
+getReplace :: Replace -> String
+getReplace s = case s of
+    Enqueue str -> str
+    Replace str -> str
+    Push str -> str
+    Return str -> str
