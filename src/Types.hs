@@ -49,7 +49,7 @@ data Instruction = Instruction
     { run :: Once
     , search :: Search
     , replace :: Replace
-    } deriving (Show)
+    } deriving (Eq, Show)
 
 getSearch :: Search -> String
 getSearch s = case s of

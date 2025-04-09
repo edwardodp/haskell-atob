@@ -1,12 +1,15 @@
 module Program
     ( processOutput
+    , processSingle
+    , unwrapJust
+    , searchAndReplace
     , shouldRun
     , searchMatch
     , listIndex
 ) where
 
 import Data.List (tails, elemIndex)
-import Data.Maybe (isNothing)
+import Data.Maybe (isNothing, fromJust)
 import Types
 
 
@@ -18,7 +21,43 @@ Repeat until no instruction has a match with the search string at which point th
 If OS memory limit is exceeded, the program will also terminate
 -}
 processOutput :: [Instruction] -> String -> String
-processOutput instructions input = undefined
+processOutput instructions input = let (newInsts, output, isDone) = processSingle instructions input
+    in if isDone then
+        output
+    else
+        snd3 $ processSingle newInsts output
+
+snd3 :: (a, b, c) -> b
+snd3 (_, x, _) = x
+
+-- Take in the current instruction set and current state of input,
+-- then output the modified instruction set and the modified input string,
+-- then a bool to represent if the end of total program is reached
+processSingle :: [Instruction] -> String -> ([Instruction], String, Bool)
+processSingle currentInsts input = 
+    let runQuery = map (`shouldRun` input) currentInsts
+        valid = concatMap unwrapJust runQuery
+    in case valid of
+        [] -> (currentInsts, input, True)
+        _  -> let instInd = fromJust $ Just (head valid) `elemIndex` runQuery
+            in (recreateInstructions currentInsts (head valid) instInd, searchAndReplace (head valid) input, False) 
+
+unwrapJust :: Maybe a -> [a]
+unwrapJust Nothing = []
+unwrapJust (Just x) = [x]
+
+recreateInstructions :: [Instruction] -> Instruction -> Int -> [Instruction]
+recreateInstructions old newVal index = take index old ++ [newVal] ++ drop index old
+
+-- Prereq is that this instruction has a match
+-- Returns modfied string
+searchAndReplace :: Instruction -> String -> String
+searchAndReplace oldInst input = let (midStr, Just replaceInd) = searchMatch oldInst input in
+    case replace oldInst of
+        Enqueue newStr -> newStr ++ midStr
+        Replace newStr -> take replaceInd midStr ++ newStr ++ drop replaceInd midStr
+        Push newStr    -> midStr ++ newStr
+        Return newStr  -> newStr
 
 {- |
 Determines if an instruction can be executed. If it can, and it is of type Once, then it will update the instruction to reflect it shall not run again
