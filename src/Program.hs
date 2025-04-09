@@ -39,8 +39,8 @@ searchMatch instruction input = case listIndex input (getSearch $ search instruc
     Nothing -> (input, Nothing)
     Just searchInd -> case search instruction of 
         Start substr -> if substr == take (length substr) input then (drop (length substr) input, Just 0) else (input, Nothing)
-        End substr -> if substr == drop (length input - length substr) input then (take (length substr) input, Just $ length input - length substr) else (input, Nothing)
+        End substr -> if substr == drop (length input - length substr) input then (take (length input - length substr) input, Just $ length input - length substr) else (input, Nothing)
         First substr -> (take searchInd input ++ drop (length substr + searchInd) input, Just searchInd)
 
 listIndex :: Eq a => [a] -> [a] -> Maybe Int
-listIndex xs subx = elemIndex subx $ map (take $ length subx) $ [ ts | ts <- tails xs, length ts == length subx ]
+listIndex xs subx = elemIndex subx $ map (take $ length subx) $ tails xs
