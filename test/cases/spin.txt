@@ -1,0 +1,12 @@
+cbab
+abcb
+cba
+acb
+ccaacb
+aacbcc
+cbabacc
+abacccb
+ccbbbab
+abccbbb
+bcabcab
+abcabbc

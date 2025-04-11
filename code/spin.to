@@ -1,0 +1,3 @@
+# Move each letter before the first "a" to the end of the string
+(start)c=(end)c
+(start)b=(end)b

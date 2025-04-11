@@ -1,0 +1,9 @@
+# Return true if input is a palindrome
+axAy=
+bxBy=
+cxCy=
+(start)a=(end)xAy
+(start)b=(end)xBy
+(start)c=(end)xCy
+yx=(return)false
+=(return)true

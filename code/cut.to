@@ -1,0 +1,2 @@
+# Remove the first three "a"s if they exist as consecutive letters at the start
+(once)(start)aaa=

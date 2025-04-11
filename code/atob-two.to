@@ -1,0 +1,5 @@
+# Replace all "a"s at the start and end of the input with "b"s
+(start)a=(end)x
+x=(start)b
+(end)a=(start)y
+y=(end)b

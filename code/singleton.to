@@ -1,0 +1,4 @@
+# Replace consecutive repeated letters with just one of that letter
+aa=a
+bb=b
+cc=c

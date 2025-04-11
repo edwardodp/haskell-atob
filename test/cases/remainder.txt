@@ -1,0 +1,14 @@
+aaa
+0
+bbbbb
+2
+ccccccc
+1
+bbbabc
+0
+acacbbb
+1
+bbac
+1
+ab
+2

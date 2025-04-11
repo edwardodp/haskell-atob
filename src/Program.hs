@@ -36,6 +36,7 @@ processSingle currentInsts input =
         valid = concatMap unwrapJust runQuery
     in case valid of
         [] -> (currentInsts, input, True)
+        Instruction _ _ (Return retStr) : _ -> (currentInsts, retStr, True)
         _  -> let instInd = fromJust $ Just (head valid) `elemIndex` runQuery
             in (recreateInstructions currentInsts (head valid) instInd, searchAndReplace (head valid) input, False) 
 

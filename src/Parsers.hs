@@ -23,7 +23,7 @@ interpreter :: String -> Parser String
 interpreter inputStr = do
     input <- strLegal inputStr
     manyConsumeIgnores -- Ignore leading whitespace/comments
-    instructions <- many instruction -- Any instruction (at this point) will have to be 'valid'
+    instructions <- some instruction -- Any instruction (at this point) will have to be 'valid'
     pure $ processOutput instructions input
  
 instruction :: Parser Instruction
@@ -32,8 +32,7 @@ instruction = do
     search <- parseSearch
     char '='
     replace <- parseReplace
-    consumeIgnore >> manyConsumeIgnores -- Equivalent to someConsumeIgnores
-
+    manyConsumeIgnores 
     pure $ Instruction once search replace
 
 parseOnce :: Parser Once

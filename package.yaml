@@ -59,3 +59,8 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - haskell-atob
+    - hspec
+    - directory
+    - filepath
+    - process
+    - text

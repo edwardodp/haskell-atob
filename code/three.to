@@ -1,0 +1,5 @@
+# Return true if input has at least three "a"s
+ba=ab
+ca=ac
+aaa=(return)true
+=(return)false
