@@ -25,10 +25,7 @@ processOutput instructions input = let (newInsts, output, isDone) = processSingl
     in if isDone then
         output
     else
-        snd3 $ processSingle newInsts output
-
-snd3 :: (a, b, c) -> b
-snd3 (_, x, _) = x
+        processOutput newInsts output
 
 -- Take in the current instruction set and current state of input,
 -- then output the modified instruction set and the modified input string,
@@ -47,7 +44,7 @@ unwrapJust Nothing = []
 unwrapJust (Just x) = [x]
 
 recreateInstructions :: [Instruction] -> Instruction -> Int -> [Instruction]
-recreateInstructions old newVal index = take index old ++ [newVal] ++ drop index old
+recreateInstructions old newVal index = take index old ++ [newVal] ++ drop (index + 1) old
 
 -- Prereq is that this instruction has a match
 -- Returns modfied string
