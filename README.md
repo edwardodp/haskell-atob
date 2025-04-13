@@ -1,6 +1,6 @@
 # haskell-atob
 
-An interpreter for the esoteric language (**A=B**)[https://esolangs.org/wiki/A%3DB] (pronounced *"a to b"*), written entirely in [Haskell](https://www.haskell.org/).
+An interpreter for the esoteric language [**A=B**](https://esolangs.org/wiki/A%3DB) (pronounced *"a to b"*), written entirely in [Haskell](https://www.haskell.org/).
 
 ---
 
