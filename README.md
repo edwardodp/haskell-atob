@@ -57,7 +57,27 @@ If the string ends in `abc`, remove it and add `xyz` to the front — but only o
 
 Make sure you have [Stack](https://docs.haskellstack.org/en/stable/README/) installed.
 
-### Run an A=B program:
+### Using the `to` Wrapper Script (Recommended)
+A simple Zsh wrapper script is provided to simplify running programs.
+
+1.  **Make it Executable:**
+    ```bash
+    chmod +x to
+    ```
+2.  **Run a Program:**
+    ```bash
+    ./to programname inputstring
+    ```
+
+### Example Use Case
+To check if a string is a palindrome using the provided `palindrome.to` program:
+
+```bash
+%./to code/palindrome abcabc
+false
+```
+
+### Using stack directly:
 ```bash
 stack run -- programname inputstring
 ```
