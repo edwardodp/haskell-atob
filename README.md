@@ -69,7 +69,7 @@ A simple Zsh wrapper script is provided to simplify running programs.
     ./to programname inputstring
     ```
 
-### Example Use Case
+#### Example Use Case
 To check if a string is a palindrome using the provided `palindrome.to` program:
 
 ```bash
